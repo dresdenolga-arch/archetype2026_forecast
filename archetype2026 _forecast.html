@@ -1,0 +1,1155 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>Твой архетип 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --gold: #C8A96E;
+  --gold-light: #E8D5A8;
+  --gold-pale: #F5EDD8;
+  --dark: #0F0E0C;
+  --dark2: #1A1814;
+  --dark3: #252219;
+  --ink: #2C2820;
+  --muted: #8A8070;
+  --cream: #FAF6EE;
+  --radius: 16px;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+
+html, body {
+  min-height: 100vh;
+  background: var(--dark);
+  font-family: 'Jost', sans-serif;
+  color: var(--cream);
+  overflow-x: hidden;
+}
+
+/* BG texture */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 80% 60% at 20% 0%, rgba(200,169,110,0.08) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 40% at 80% 100%, rgba(200,169,110,0.05) 0%, transparent 60%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.container {
+  position: relative;
+  z-index: 1;
+  max-width: 480px;
+  margin: 0 auto;
+  padding: 0 20px 60px;
+}
+
+/* HEADER */
+.header {
+  padding: 48px 0 36px;
+  text-align: center;
+}
+.header-eyebrow {
+  font-family: 'Jost', sans-serif;
+  font-weight: 300;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 16px;
+}
+.header h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 46px;
+  font-weight: 300;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  color: var(--cream);
+  margin-bottom: 8px;
+}
+.header h1 em {
+  font-style: italic;
+  color: var(--gold);
+}
+.header-sub {
+  font-size: 13px;
+  font-weight: 300;
+  color: var(--muted);
+  line-height: 1.6;
+  margin-top: 12px;
+}
+.header-credit {
+  font-size: 11px;
+  font-weight: 300;
+  color: rgba(200,169,110,0.45);
+  letter-spacing: 0.06em;
+  margin-top: 14px;
+  line-height: 1.6;
+}
+
+/* CARD */
+.card {
+  background: var(--dark2);
+  border: 0.5px solid rgba(200,169,110,0.2);
+  border-radius: var(--radius);
+  padding: 28px 24px;
+  margin-bottom: 16px;
+}
+
+.form-label {
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  font-weight: 400;
+  color: var(--gold);
+  display: block;
+  margin-bottom: 14px;
+}
+
+/* GENDER */
+.gender-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 4px;
+}
+.gender-btn {
+  padding: 14px;
+  background: var(--dark3);
+  border: 0.5px solid rgba(200,169,110,0.15);
+  border-radius: 12px;
+  color: var(--muted);
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 18px;
+  font-weight: 400;
+  cursor: pointer;
+  transition: all .2s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+.gender-btn .g-icon { font-size: 22px; }
+.gender-btn .g-label { font-size: 12px; font-family: 'Jost', sans-serif; font-weight: 300; letter-spacing: 0.05em; }
+.gender-btn.active {
+  background: rgba(200,169,110,0.12);
+  border-color: var(--gold);
+  color: var(--gold-light);
+}
+
+/* DATE INPUT */
+.date-row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; margin-bottom: 4px; }
+.date-field { display: flex; flex-direction: column; gap: 6px; }
+.date-field label { font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); font-weight: 400; }
+.date-field input {
+  background: var(--dark3);
+  border: 0.5px solid rgba(200,169,110,0.15);
+  border-radius: 10px;
+  padding: 14px 12px;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 22px;
+  font-weight: 300;
+  color: var(--cream);
+  text-align: center;
+  width: 100%;
+  outline: none;
+  -webkit-appearance: none;
+  transition: border-color .2s;
+  caret-color: var(--gold);
+}
+.date-field input::placeholder { color: rgba(200,169,110,0.25); font-size: 20px; }
+.date-field input:focus { border-color: rgba(200,169,110,0.5); }
+
+/* BUTTON */
+.calc-btn {
+  width: 100%;
+  padding: 18px;
+  background: var(--gold);
+  border: none;
+  border-radius: 14px;
+  font-family: 'Jost', sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--dark);
+  cursor: pointer;
+  transition: all .2s;
+  margin-top: 4px;
+}
+.calc-btn:active { transform: scale(0.98); opacity: 0.9; }
+.calc-btn:disabled { opacity: 0.4; cursor: not-allowed; }
+
+/* ERROR */
+.error-msg {
+  font-size: 12px;
+  color: #E07070;
+  text-align: center;
+  margin-top: 10px;
+  display: none;
+}
+
+/* DIVIDER */
+.divider {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 28px 0 24px;
+}
+.divider::before, .divider::after {
+  content: '';
+  flex: 1;
+  height: 0.5px;
+  background: rgba(200,169,110,0.2);
+}
+.divider span {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 18px;
+  color: rgba(200,169,110,0.4);
+}
+
+/* RESULT */
+#result { display: none; }
+#result.visible { display: block; animation: fadeUp .5s ease both; }
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.result-top {
+  text-align: center;
+  padding: 32px 24px 28px;
+  background: var(--dark2);
+  border: 0.5px solid rgba(200,169,110,0.2);
+  border-radius: var(--radius);
+  margin-bottom: 16px;
+  position: relative;
+  overflow: hidden;
+}
+.result-top::before {
+  content: '';
+  position: absolute;
+  top: -40px; left: 50%;
+  transform: translateX(-50%);
+  width: 200px; height: 200px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(200,169,110,0.08) 0%, transparent 70%);
+  pointer-events: none;
+}
+.result-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 72px;
+  font-weight: 300;
+  color: rgba(200,169,110,0.15);
+  line-height: 1;
+  position: absolute;
+  top: 20px; right: 20px;
+  pointer-events: none;
+  user-select: none;
+}
+.result-icon {
+  font-size: 36px;
+  margin-bottom: 12px;
+  display: block;
+}
+.result-eyebrow {
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 8px;
+  font-weight: 400;
+}
+.result-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 42px;
+  font-weight: 300;
+  color: var(--cream);
+  line-height: 1.1;
+  margin-bottom: 6px;
+}
+.result-key {
+  font-size: 13px;
+  font-weight: 300;
+  color: var(--muted);
+  font-style: italic;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 18px;
+}
+.result-calc {
+  font-size: 11px;
+  color: rgba(200,169,110,0.4);
+  margin-top: 16px;
+  letter-spacing: 0.05em;
+}
+
+.result-section {
+  background: var(--dark2);
+  border: 0.5px solid rgba(200,169,110,0.15);
+  border-radius: var(--radius);
+  padding: 24px 22px;
+  margin-bottom: 14px;
+}
+.section-tag {
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--gold);
+  font-weight: 400;
+  margin-bottom: 12px;
+  display: block;
+}
+.section-body {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 19px;
+  font-weight: 300;
+  line-height: 1.65;
+  color: #D8D0C0;
+}
+.section-body strong {
+  color: var(--gold-light);
+  font-weight: 400;
+}
+
+.keys-wrap { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 4px; }
+.key-chip {
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  color: var(--gold);
+  background: rgba(200,169,110,0.08);
+  border: 0.5px solid rgba(200,169,110,0.25);
+  border-radius: 20px;
+  padding: 5px 14px;
+}
+
+.reset-btn {
+  width: 100%;
+  padding: 16px;
+  background: transparent;
+  border: 0.5px solid rgba(200,169,110,0.2);
+  border-radius: 14px;
+  font-family: 'Jost', sans-serif;
+  font-size: 12px;
+  font-weight: 300;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--muted);
+  cursor: pointer;
+  transition: all .2s;
+  margin-top: 8px;
+}
+.reset-btn:active { opacity: 0.7; }
+
+/* MODE TOGGLE */
+.mode-toggle {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+.mode-btn {
+  padding: 12px 8px;
+  background: var(--dark3);
+  border: 0.5px solid rgba(200,169,110,0.15);
+  border-radius: 12px;
+  color: var(--muted);
+  font-family: 'Jost', sans-serif;
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all .2s;
+  text-align: center;
+}
+.mode-btn.active {
+  background: rgba(200,169,110,0.12);
+  border-color: var(--gold);
+  color: var(--gold-light);
+}
+
+/* BAZI BLOCK */
+.bazi-card {
+  background: var(--dark2);
+  border: 0.5px solid rgba(200,169,110,0.2);
+  border-radius: var(--radius);
+  padding: 22px 22px 20px;
+  margin-bottom: 16px;
+}
+.bazi-link-btn {
+  display: block;
+  text-align: center;
+  padding: 13px;
+  background: rgba(200,169,110,0.08);
+  border: 0.5px solid rgba(200,169,110,0.3);
+  border-radius: 12px;
+  color: var(--gold);
+  font-family: 'Jost', sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  text-decoration: none;
+  margin: 14px 0 10px;
+  transition: all .2s;
+}
+.bazi-link-btn:active { opacity: 0.7; }
+.bazi-note {
+  font-size: 11px;
+  font-weight: 300;
+  color: rgba(200,169,110,0.4);
+  text-align: center;
+  line-height: 1.6;
+}
+
+/* ANIMAL SELECTOR */
+.animal-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 7px;
+  margin-top: 12px;
+}
+.animal-btn {
+  padding: 10px 4px 8px;
+  background: var(--dark3);
+  border: 0.5px solid rgba(200,169,110,0.12);
+  border-radius: 10px;
+  color: var(--muted);
+  font-family: 'Jost', sans-serif;
+  font-size: 9px;
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  transition: all .2s;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+.animal-btn .a-emoji { font-size: 20px; line-height: 1; }
+.animal-btn.selected {
+  background: rgba(200,169,110,0.12);
+  border-color: var(--gold);
+  color: var(--gold-light);
+}
+.animal-label {
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-weight: 400;
+  color: rgba(200,169,110,0.5);
+  display: block;
+  margin-bottom: 8px;
+  margin-top: 4px;
+}
+
+/* ANIMALS IN RESULT */
+.animals-result {
+  background: var(--dark2);
+  border: 0.5px solid rgba(200,169,110,0.15);
+  border-radius: var(--radius);
+  padding: 22px 22px 18px;
+  margin-bottom: 14px;
+}
+.animal-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 12px 0;
+  border-bottom: 0.5px solid rgba(200,169,110,0.08);
+}
+.animal-row:last-child { border-bottom: none; }
+.animal-emoji-big { font-size: 28px; width: 36px; flex-shrink: 0; line-height: 1.2; }
+.animal-info { flex: 1; }
+.animal-name-result { font-family: 'Cormorant Garamond', serif; font-size: 20px; font-weight: 400; color: var(--gold-light); margin-bottom: 2px; }
+.animal-pos { font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(200,169,110,0.4); margin-bottom: 5px; }
+.animal-task { font-family: 'Cormorant Garamond', serif; font-size: 16px; font-weight: 300; color: #C8C0B0; line-height: 1.55; }
+
+/* SHORT MODE */
+.short-section {
+  background: var(--dark2);
+  border: 0.5px solid rgba(200,169,110,0.15);
+  border-radius: var(--radius);
+  padding: 22px 22px 18px;
+  margin-bottom: 14px;
+}
+.action-item {
+  display: flex;
+  gap: 12px;
+  padding: 9px 0;
+  border-bottom: 0.5px solid rgba(200,169,110,0.07);
+  align-items: flex-start;
+}
+.action-item:last-child { border-bottom: none; }
+.action-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 22px;
+  font-weight: 300;
+  color: rgba(200,169,110,0.35);
+  width: 22px;
+  flex-shrink: 0;
+  line-height: 1.4;
+}
+.action-text {
+  font-size: 14px;
+  font-weight: 300;
+  color: #C8C0B0;
+  line-height: 1.55;
+}
+.action-text b { color: var(--gold-light); font-weight: 400; }
+.week-question {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 20px;
+  font-weight: 300;
+  color: var(--cream);
+  line-height: 1.5;
+  font-style: italic;
+  padding: 16px 0 8px;
+}
+.mantra-box {
+  background: rgba(200,169,110,0.07);
+  border: 0.5px solid rgba(200,169,110,0.2);
+  border-radius: 12px;
+  padding: 16px;
+  text-align: center;
+  margin-top: 8px;
+}
+.mantra-text {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 18px;
+  font-weight: 400;
+  color: var(--gold-light);
+  line-height: 1.6;
+}
+
+/* HOW TO */
+.how-card {
+  background: transparent;
+  border: 0.5px solid rgba(200,169,110,0.1);
+  border-radius: var(--radius);
+  padding: 22px 22px 18px;
+  margin-bottom: 28px;
+}
+.how-title {
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(200,169,110,0.4);
+  margin-bottom: 14px;
+}
+.how-step {
+  display: flex;
+  gap: 12px;
+  padding: 8px 0;
+  border-bottom: 0.5px solid rgba(200,169,110,0.07);
+}
+.how-step:last-child { border-bottom: none; }
+.how-n {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 14px;
+  font-weight: 300;
+  color: rgba(200,169,110,0.6);
+  width: 22px;
+  flex-shrink: 0;
+  line-height: 1.6;
+  padding-top: 2px;
+}
+.how-text {
+  font-size: 13px;
+  font-weight: 300;
+  color: var(--muted);
+  line-height: 1.6;
+}
+.how-text strong {
+  color: var(--gold-light);
+  font-weight: 400;
+}
+
+/* FOOTER */
+.footer {
+  text-align: center;
+  padding-top: 12px;
+}
+.footer p {
+  font-size: 11px;
+  font-weight: 300;
+  color: rgba(200,169,110,0.3);
+  letter-spacing: 0.08em;
+  line-height: 1.7;
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <div class="header">
+    <div class="header-eyebrow">Инструмент разработан Ольгой Абрамовой</div>
+    <h1>Твой архетип<br><em>2026 года</em></h1>
+    <p class="header-sub">Персональный нумерологический код года<br>на основе даты рождения</p>
+    <p class="header-credit">Данные предоставлены: Школа Инсайтпортал · Станислав Решетников</p>
+  </div>
+
+  <div class="how-card">
+    <div class="how-title">Что важно знать о 2026 годе</div>
+    <div class="how-step">
+      <div class="how-n">✦</div>
+      <div class="how-text">2026 год — год <strong>Огненной Лошади</strong>. Это двойной огонь: год скорости, яркости и радикальных трансформаций. Всё, что вы давно хотели изменить — изменится быстро.</div>
+    </div>
+    <div class="how-step">
+      <div class="how-n">✦</div>
+      <div class="how-text">Нумерологический код года — <strong>Колесо Фортуны</strong> (10). Год поворотов судьбы, неожиданных возможностей и потока удачи. Главный принцип — действовать легко, без форсирования.</div>
+    </div>
+    <div class="how-step">
+      <div class="how-n">✦</div>
+      <div class="how-text">Это время <strong>женщин</strong> — в бизнесе, карьере, влиянии. Время проявляться, заявлять о себе и не сидеть в тени.</div>
+    </div>
+    <div class="how-step">
+      <div class="how-n">✦</div>
+      <div class="how-text">Получи персональные рекомендации для себя — введи дату рождения, и калькулятор определит твой личный архетип на 2026 год.</div>
+    </div>
+  </div>
+
+  <!-- FORM -->
+  <div id="form-section">
+
+    <!-- MODE TOGGLE -->
+    <div class="mode-toggle">
+      <button class="mode-btn active" id="mode-full" onclick="setMode('full')">✦ Расширенный прогноз</button>
+      <button class="mode-btn" id="mode-short" onclick="setMode('short')">◎ Краткий план действий</button>
+    </div>
+
+    <div class="card">
+      <span class="form-label">Твой пол</span>
+      <div class="gender-row">
+        <button class="gender-btn" id="btn-f" onclick="selectGender('f')">
+          <span class="g-icon">☽</span>
+          <span class="g-label">Женский</span>
+        </button>
+        <button class="gender-btn" id="btn-m" onclick="selectGender('m')">
+          <span class="g-icon">☉</span>
+          <span class="g-label">Мужской</span>
+        </button>
+      </div>
+    </div>
+
+    <div class="card">
+      <span class="form-label">Дата рождения</span>
+      <div class="date-row">
+        <div class="date-field">
+          <label>День</label>
+          <input type="tel" id="inp-d" placeholder="23" maxlength="2" inputmode="numeric" oninput="handleInput(this,'inp-m')">
+        </div>
+        <div class="date-field">
+          <label>Месяц</label>
+          <input type="tel" id="inp-m" placeholder="10" maxlength="2" inputmode="numeric" oninput="handleInput(this,'inp-y')">
+        </div>
+        <div class="date-field">
+          <label>Год</label>
+          <input type="tel" id="inp-y" placeholder="1975" maxlength="4" inputmode="numeric" oninput="handleInput(this,null)">
+        </div>
+      </div>
+    </div>
+
+    <!-- BAZI BLOCK -->
+    <div class="bazi-card">
+      <span class="form-label">Животные по Бацзы (необязательно)</span>
+      <p style="font-size:13px;font-weight:300;color:var(--muted);line-height:1.6;margin-bottom:4px;">
+        Узнай своих четырёх животных — они дадут более глубокий персональный прогноз.
+      </p>
+      <a class="bazi-link-btn" href="https://minglie.ru/bazi-calculator/" target="_blank">
+        ✦ Открыть калькулятор Бацзы на minglie.ru →
+      </a>
+      <p class="bazi-note">Введи дату рождения → посмотри строку «Животные» → выбери ниже</p>
+
+      <div style="margin-top:16px;">
+        <span class="animal-label">Год рождения</span>
+        <div class="animal-grid" id="grid-year"></div>
+      </div>
+      <div style="margin-top:14px;">
+        <span class="animal-label">Месяц рождения</span>
+        <div class="animal-grid" id="grid-month"></div>
+      </div>
+      <div style="margin-top:14px;">
+        <span class="animal-label">День рождения</span>
+        <div class="animal-grid" id="grid-day"></div>
+      </div>
+    </div>
+
+    <button class="calc-btn" onclick="calculate()">Получить прогноз</button>
+    <div class="error-msg" id="error-msg">Пожалуйста, заполни все поля корректно</div>
+  </div>
+
+  <div class="divider"><span>✦</span></div>
+
+  <!-- RESULT -->
+  <div id="result">
+    <!-- FULL MODE RESULT -->
+    <div id="result-full">
+      <div class="result-top">
+        <div class="result-num" id="res-num"></div>
+        <span class="result-icon" id="res-icon"></span>
+        <div class="result-eyebrow">Твой архетип 2026 года</div>
+        <div class="result-name" id="res-name"></div>
+        <div class="result-key" id="res-key"></div>
+        <div class="result-calc" id="res-calc"></div>
+      </div>
+
+      <div class="result-section">
+        <span class="section-tag">Общая энергия</span>
+        <div class="section-body" id="res-general"></div>
+      </div>
+
+      <div class="result-section">
+        <span class="section-tag">Персональный прогноз</span>
+        <div class="section-body" id="res-personal"></div>
+      </div>
+
+      <div class="result-section">
+        <span class="section-tag">Ключевые темы года</span>
+        <div class="keys-wrap" id="res-keys"></div>
+      </div>
+
+      <!-- ANIMALS RESULT -->
+      <div class="animals-result" id="res-animals" style="display:none;">
+        <span class="section-tag">Задачи твоих животных в 2026</span>
+        <div id="animals-list"></div>
+      </div>
+    </div>
+
+    <!-- SHORT MODE RESULT -->
+    <div id="result-short" style="display:none;">
+      <div class="result-top">
+        <div class="result-num" id="res-num-s"></div>
+        <span class="result-icon" id="res-icon-s"></span>
+        <div class="result-eyebrow">Твой план действий · 2026</div>
+        <div class="result-name" id="res-name-s"></div>
+        <div class="result-key" id="res-key-s"></div>
+      </div>
+
+      <div class="short-section">
+        <span class="section-tag">8 действий на этот год</span>
+        <div id="res-actions"></div>
+      </div>
+
+      <div class="short-section" id="short-animals-section" style="display:none;">
+        <span class="section-tag">Подсказки по животным</span>
+        <div id="res-animal-tips"></div>
+      </div>
+
+      <div class="short-section">
+        <span class="section-tag">Вопрос недели</span>
+        <div class="week-question" id="res-question"></div>
+        <div class="mantra-box">
+          <div class="mantra-text">«Всё, что со мной происходит — это большая удача»</div>
+        </div>
+      </div>
+    </div>
+
+    <button class="reset-btn" onclick="reset()">← Рассчитать для другой даты</button>
+  </div>
+
+  <div class="footer">
+    <p>По материалам вебинара<br>Станислав Решетников · Школа Инсайтпортал</p>
+  </div>
+
+</div>
+
+<script>
+var selectedGender = null;
+var selectedMode = 'full';
+var selectedAnimals = { year: null, month: null, day: null };
+
+/* ── ANIMALS DATA ── */
+var animalList = [
+  { id:'rat',     emoji:'🐭', name:'Крыса',    element:'Янская вода',  from:'Стагнация',      to:'Свобода',       tip:'Пересили один страх — для крысы нет безвыходных ситуаций. Смелость и находчивость принесут деньги.' },
+  { id:'ox',      emoji:'🐂', name:'Бык',      element:'Иньская земля',from:'Перфекционизм',  to:'Принятие',      tip:'Хватит пахать и отдавать плоды другим. Присвой себе свои труды и назови их вслух.' },
+  { id:'tiger',   emoji:'🐯', name:'Тигр',     element:'Дерево',       from:'Отрицание',      to:'Осознанность',  tip:'Действуй при первом сигнале тревоги — не жди, пока станет очевидно. Ты видишь правду раньше других.' },
+  { id:'rabbit',  emoji:'🐰', name:'Кролик',   element:'Дерево',       from:'Неполноценность',to:'Развитие',      tip:'Назови вслух свои таланты. Перестань пропускать других вперёд — твоё место уже ждёт тебя.' },
+  { id:'dragon',  emoji:'🐉', name:'Дракон',   element:'Земля',        from:'Недостоверность',to:'Исцеление',     tip:'Просто присутствуй рядом с другими — не нужно знать, кто ты. Ответ придёт сам через это присутствие.' },
+  { id:'snake',   emoji:'🐍', name:'Змея',     element:'Иньский огонь',from:'Скрытая агрессия',to:'Ответственность',tip:'Скажи напрямую то, что хочешь — без схем и обходных путей. Твоя сила велика, не трать её на хитрость.' },
+  { id:'horse',   emoji:'🐴', name:'Лошадь',   element:'Янский огонь', from:'Несвобода',      to:'Преображение',  tip:'Отпусти то, что давно отжило — огонь сожжёт мешающее само. Скачи вперёд и не оглядывайся.' },
+  { id:'goat',    emoji:'🐐', name:'Коза',     element:'Иньская земля',from:'Борьба',         to:'Благодарность', tip:'Найди три вещи, за которые благодаришь прямо сейчас. Из сопротивления — в ценность того, что есть.' },
+  { id:'monkey',  emoji:'🐒', name:'Обезьяна', element:'Янский металл',from:'Неведение',      to:'Истина',        tip:'Называй правду словами — ты видишь раньше всех. Твоя ясность наводит порядок в самых сложных ситуациях.' },
+  { id:'rooster', emoji:'🐓', name:'Петух',    element:'Иньский металл',from:'Обесценивание', to:'Красота',       tip:'Посмотри на себя как на красивого — ты и есть. Перестань обесценивать себя и других.' },
+  { id:'dog',     emoji:'🐕', name:'Собака',   element:'Янская земля', from:'Контроль',       to:'Инновация',     tip:'Одну свою идею — вслух сегодня. Направь заботу на команду, а не на своё эго, и откроется видение будущего.' },
+  { id:'pig',     emoji:'🐷', name:'Свинья',   element:'Иньская вода', from:'Обвинение',      to:'Баланс',        tip:'Возьми ответственность за одно — и почувствуй удовольствие. Ты способен наслаждаться жизнью как никто.' },
+];
+
+/* ── SHORT ACTIONS PER ARCHETYPE ── */
+var shortActions = {
+  1:  ["Импровизируй и пробуй новое — не жди идеального момента", "Больше общайся и собирай информацию: удача придёт через людей", "Запусти новое дело или начни осваивать новую профессию", "Отпусти контроль — допусти, что будет иначе, чем ты задумал", "Говори больше: встречи, созвоны, соцсети — везде оставляй следы", "Каждую неделю — одно новое действие, которого ты раньше не делал", "Действуй мимоходом: написал, отправил, предложил — и не жди", "Расхламление: убери старые инструменты и подходы — они уже не работают"],
+  2:  ["Замедлись и добавь пассивности — никакой борьбы и раздвигания конкурентов", "Слушай, жди и наблюдай — интуиция твой главный навигатор в 2026", "Не требуй ясности раньше времени — позволь процессу идти", "Когда перевозбуждают — представь себя под защитой и не реагируй", "Замечай знаки: они будут очень часто — не игнорируй", "Медитации и тишина — это не лень, это твоя работа этого года", "Не вмешивайся там, где хочется — наблюдай, что случится само", "Добавь воды: ванна, бассейн, тихие прогулки у водоёмов"],
+  3:  ["Дай шанс всем — не оценивай сразу, дай время проявиться", "Не бойся отпускать тех, кто отдаляется — твоё мимо тебя не пройдёт", "Будь открыта к возвращению — Фортуна любит повторять истории", "Замечай финансовые возможности — Императрица это богатая материальная энергия", "Не торопись с выводами об отношениях — дай неопределённости быть", "Говори о своих желаниях вслух — не жди, пока угадают", "Окружай себя красотой и изобилием — это настройка на твою волну", "Благодари за то, что уже есть — это открывает поток большего"],
+  4:  ["Не держись за старый порядок — перемены в доме и работе это расширение", "Соглашайся на неожиданные деловые предложения — даже если страшно", "Один конкретный шаг к финансовой независимости прямо сейчас", "Позволь структуре своей жизни измениться — это рост, не потеря", "Если предложат новую должность — скажи да раньше, чем испугаешься", "Переосмысли, что для тебя «стабильность» — возможно, она тебя ограничивает", "Действуй как хозяин своей системы — а не как её заложник", "Расхламление в доме и в делах — освободи место для нового"],
+  5:  ["Позволь своим убеждениям измениться — это не предательство, это рост", "Семейные перемены — не сопротивляйся, а ищи новый формат отношений", "Попробуй что-то нетрадиционное: образ, занятие, опыт", "Если давно хочется официального — сделай шаг в этом направлении", "Перестань объяснять себя — новые ценности не требуют оправдания", "Обнови свой образ: что-то одно изменить во внешности или стиле", "Поговори честно о том, как изменились твои приоритеты", "Дай себе право быть другим человеком, чем год назад"],
+  6:  ["Делай первый шаг — не жди, пока пригласят", "Признавайся в своих желаниях прямо: хочу познакомиться, хочу вместе, хочу попробовать", "Каждую неделю — одно новое знакомство или встреча", "Не замирай в выборе — будут ещё варианты, ничто не навсегда", "Приглашай мир на взаимодействие: предлагай, предлагай, предлагай", "Отпускай расставания легко — они освобождают место для встреч", "Деловые партнёрства — этот год отличный для новых союзов", "Будь открытым к нестандартным форматам отношений и сотрудничества"],
+  7:  ["Двигайся быстро — промедление дороже ошибки в этом году", "Когда путь меняется — не паникуй, это и есть правильный маршрут", "Поворачивай паруса туда, куда дует ветер — а не куда кажется правильным", "Визуализируй цель — и двигайся к ней, даже если нелинейно", "Не воюй с потоком — позволь ему себя вести", "Сформулируй свою цель на год максимально конкретно", "Каждую неделю — одно действие в сторону мечты, любое", "Отмечай каждый шаг вперёд — даже небольшой"],
+  8:  ["Продолжай делать правильное — момент перехода количества в качество близок", "Если чего-то долго ждёшь — 2026 год именно для этого", "Не торопи разрешение — всё сложится в своё время", "Отпусти ситуацию, в которой застрял — и жди неожиданного поворота", "Назови вслух то, что ты считаешь несправедливым — Правосудие услышит", "Перестань биться в закрытые двери — попробуй соседнюю", "Доверяй процессу: то, что кажется тупиком, часто поворот", "Прощение — как себя, так и других — открывает новые возможности"],
+  9:  ["Замедлись — пока мир несётся, ты ищешь глубину внутри", "Выдели время на одиночество и тишину — это не изоляция, а исследование", "Найди свою зону экспертности и углубись в неё ещё на шаг", "Позволь миру начать замечать тебя — не навязывайся, но не прячься", "Один разговор в неделю, где ты делишься своими знаниями", "Запиши то, что знаешь — статья, пост, конспект: это твоё золото", "Финансовая независимость: один конкретный шаг в этом направлении", "Отказывайся от того, что не твоё — энергия нужна для глубины"],
+  10: ["Ты в эпицентре — ты талисман для себя самого", "Когда появятся два больших предложения — не затягивай с выбором", "Принимай неожиданные повороты как подарки, а не как катастрофы", "Каждый цикл внутри года — новый опыт, не потеря", "Действуй быстро, когда чувствуешь азарт — это твой поток", "Не привязывайся к одному сценарию — их будет несколько", "Доверяй Фортуне: она ведёт тебя лучше, чем любой план", "Мантра: «Всё, что со мной происходит — это большая удача»"],
+  11: ["Начни слушать тело — «хочу» и «тошнит» важнее любой логики", "Убери из жизни одно токсичное: человека, ситуацию, обязательство", "Начни или углуби телесную практику: спорт, танцы, йога", "Выбирай из телесного ощущения, а не из головы", "Сексуальность и энергия тела — это твой ключ к удаче этого года", "Расчисти пространство от лишних людей — мягко, но решительно", "Замечай своё нежелание — это не каприз, это компас", "Восстанови один естественный ритм: сон, питание, движение"],
+  12: ["Отпусти привязанность к одному результату — придёт с другой стороны", "Когда нет решения — скажи себе: «Я повисел, я вручаю это Богу»", "Нащупай то, что не можешь не делать — и сделай это своей практикой", "Молитва и обращение к высшему — это твой главный инструмент", "Замедлись в материальных амбициях — откроется духовная глубина", "Помоги кому-то — и почувствуй, как открывается твой дар", "Прими то, что есть прямо сейчас — не борись с реальностью", "Паузы и ожидание — не слабость, а стратегия Повешенного"],
+  13: ["Проведи генеральную уборку и расхламление прямо сейчас — это активация", "Отпусти то, что давно не работает — в работе, отношениях, привычках", "Смена работы, деятельности или статуса — поддерживается этим годом", "Дай себе право завершить то, что затянулось", "Освободи место — старые декорации уберут, родится новое", "Скажи «всё» там, где давно хочется — Смерть зачищает только неактуальное", "Не бойся завершений — они освобождают энергию для нового рождения", "Каждую неделю убирать одно лишнее из жизни"],
+  14: ["Не хватай всё сразу — пробуй понемножку и чувствуй на вкус", "Держи внутренний камертон: мне хорошо у себя, даже если снаружи штормит", "Принимай новое осторожно — не торопись, не отказывайся", "Твоя задача — баланс, а не рывок: маленькие шаги в правильном направлении", "Обращайся за помощью к ангелам — Умеренность под их защитой", "Один новый ингредиент в жизни в неделю — пробуй и оценивай", "Не принимай резких решений — у тебя есть время", "Создай своё безопасное пространство: угол, ритуал, момент покоя"],
+  15: ["Повысь себе цену — на услуги, на своё время, на своё присутствие", "Скажи вслух: «Я хочу денег, я имею на них право, я это стою»", "Интегрируй «жадность» как силу — это здоровый эгоизм, он тебе нужен", "Одно заманчивое предложение — согласись, даже если страшно", "Перестань содержать других за счёт себя — сначала себе", "Раскрепощение в одной области: позволь себе то, что раньше запрещал", "Продвигайся в карьере активно — год поддерживает тех, кто рвётся вперёд", "Убери одно внутреннее табу — и почувствуй, сколько освободится сил"],
+  16: ["Проведи генеральную уборку и расхламление — это активация Башни", "Выпускай эмоции голосом: говори «нет», гневайся, смейся в голос", "Отстаивай себя прямо — не проглатывай", "Прими решение там, где давно говоришь «с меня хватит»", "Башня зачищает неактуальное — доверяй тому, что сгорает", "Если хочется всё бросить и начать по-другому — это Башня, не кризис", "Голос: пой, кричи, говори — прорежется что-то важное", "Скажи прямо в голос: «Нет, я так не хочу»"],
+  17: ["Создай что-то своё — блог, проект, хобби: твой аутентичный свет", "Сформулируй большую цель: что ты хочешь через 5-10 лет", "Проявляйся — покажи то, что создаёшь, хотя бы одному человеку", "Звезда должна быть видимой — не прячься, но держи дистанцию", "Одна долгосрочная стратегия: не тактика, а направление на годы", "Найди свою вибрацию — что тебя наполняет и что это за твой свет", "Не чужой свет, а свой: перестань светить отражённым", "Каждую неделю делать что-то для своей большой цели"],
+  18: ["Рисуй карту желаний — Луна материализует то, на что настроена", "Намечтывай хорошее: «у меня всё получится, это большая удача»", "Записывай сны и знаки — канал расширяется, не игнорируй", "Работай с тревогой: что тревожишься — может материализоваться", "Медитируй на своё желаемое будущее — это твоя практика года", "Хорошо обращайся с женщинами в жизни — это ключ к твоей удаче", "Замечай свои чувства — они важнее, чем ты думал", "Успокаивай себя: заземляй тревогу, обнимай себя, говори хорошее"],
+  19: ["Проявляйся: соцсети, выступления, презентации — ты ролевая модель", "Живи из радости — делай то, что наполняет, а не истощает", "Прими триумф: когда что-то получится хорошо — не обесценивай", "Забота о внутреннем ребёнке: я себя люблю, я себя поддерживаю", "Не стыдись и не стесняйся — на тебя равняются", "Одно заветное желание: позволь ему исполниться в этом году", "Твоё творчество важно — покажи его людям", "Радость как компас: если радует — туда, если нет — не туда"],
+  20: ["Когда придёт призыв — согласись, даже если не понимаешь зачем", "Возьми ответственность там, где тебя зовут — это твоя миссия", "Обратись к ресурсу рода: благословение, традиция, история семьи", "Позволь масштабу вырасти — больше людей, больше влияния", "Ты на службе в 2026 — не спрашивай «почему я», а спрашивай «как»", "Один разговор с родственниками о семейной истории или памяти", "Прими лидерство там, где его предлагают", "Твоя судьба начинает сбываться — не уклоняйся"],
+  21: ["Признай: ты пришёл куда хотел — выдохни и скажи себе это", "Позволь себе удовлетворение: не ищи следующего, побудь в завершении", "Что давно делал — получишь в этом году: позволь этому прийти", "Умиротворение — не скука, а глубокий покой после долгого пути", "Поблагодари себя за путь — ты много нёс", "Если что-то завершается — это не потеря, это Мир", "Один проект или отношение — позволь им закрыться с достоинством", "Просто побудь в том, что есть: ты уже дома"],
+  22: ["Сделай шаг в неизвестное — именно туда, где нет карты", "Скажи себе: «Я пустой, я никто» — и выдержи эту пустоту", "Отпусти старую роль или персону — ты её уже не хочешь", "Позволь X-фактору войти: не планируй, куда он тебя поведёт", "Уволиться, уехать, начать с нуля — Шут это поддерживает", "Не заполняй пустоту суррогатами — из неё родится настоящее", "Доверяй обнулению — это не конец, это абсолютный старт", "Один абсолютный эксперимент: сделай то, чего никогда не делал"],
+};
+
+var weekQuestions = {
+  1: "Что новое я готов попробовать прямо сейчас — без плана и гарантий?",
+  2: "Что я замечаю, но отказываюсь видеть? Какой знак я уже получил?",
+  3: "Кому я уже давно хочу дать шанс — но чего-то жду?",
+  4: "Что в моей системе жизни давно просится на обновление?",
+  5: "Что изменилось в моих ценностях за последний год?",
+  6: "Кого я хочу пригласить в свою жизнь — на танец, на проект, на встречу?",
+  7: "Куда меня несёт ветер прямо сейчас — и готов ли я повернуть паруса?",
+  8: "Что я делаю правильно уже долго — и жду, когда это даст плоды?",
+  9: "Какую глубину я хочу исследовать внутри себя в этом году?",
+  10: "Что сейчас происходит со мной — и как это большая удача?",
+  11: "Что моё тело хочет сказать мне прямо сейчас?",
+  12: "Что я отпускаю прямо сейчас — и что приходит с другой стороны?",
+  13: "Что давно пора завершить — и что родится на этом месте?",
+  14: "Что новое я хочу попробовать — осторожно, понемногу, с вкусом?",
+  15: "На сколько я себя оцениваю — и что мешает поднять эту цифру?",
+  16: "Что я давно хочу сказать вслух — и что меня останавливает?",
+  17: "Какой свет я хочу нести в мир — именно мой, не чужой?",
+  18: "Каким я намечтываю своё будущее — и достаточно ли хорошим?",
+  19: "Что меня наполняет радостью прямо сейчас — и делаю ли я это?",
+  20: "Какой призыв я уже слышу — и что мешает сказать «да»?",
+  21: "Куда я наконец пришёл — и могу ли позволить себе это признать?",
+  22: "Что я готов начать с нуля — без карты, без плана, с доверием?",
+};
+
+/* ── ARCHETYPES DATA (same as before, keeping all) ── */
+var archetypes = {
+  1: { name:"Маг", icon:"✦", key:"Новый отсчёт",
+    general:"Старые инструменты, старые подходы — скорее всего, перестанут работать. Но это не грандиозная смена, а просто — как старая инструкция сгорает. Вы начинаете новый отсчёт.",
+    female:"Вам важно хорошо импровизировать, хорошо пробовать новое, больше говорить, больше коммуницировать, общаться с людьми, собирать информацию. Удача будет приходить через новые инструменты и неожиданный опыт. Очень может быть, что вы начнёте новую историю в 2026 году — Маг это единица, это новая точка отсчёта, начало новой истории. Удача придёт в профессиональных делах: Маг — это тот, кто запускает своё дело, осваивает новую профессию. Ваше личное испытание — отпустить контроль, потому что Маг склонен к контролю, к планированию. Допускайте, что будут разные варианты.",
+    male:"Вам важно хорошо импровизировать, хорошо пробовать новое, больше говорить, больше коммуницировать, общаться с людьми, собирать информацию. Удача будет приходить через новые инструменты и неожиданный опыт. Очень может быть, что вы начнёте новую историю в 2026 году — Маг это единица, это новая точка отсчёта, начало новой истории. Удача придёт в профессиональных делах: Маг — это тот, кто запускает своё дело, осваивает новую профессию. Ваше личное испытание — отпустить контроль, потому что Маг склонен к контролю, к планированию. Допускайте, что будут разные варианты.",
+    keys:["Новые инструменты","Новое дело","Отпустить контроль","Импровизация"] },
+  2: { name:"Жрица", icon:"☽", key:"Слушать, ждать, наблюдать",
+    general:"Жрица хорошо себя чувствует в Фортуне. Год Жрицы — это состояние, когда вам можно успокоиться, добавить больше пассивности в свою жизнь.",
+    female:"От вас в 2026 году не требуется никаких активных самостоятельных действий, никакой борьбы, раздвигания конкурентов. Ваша задача в 2026 году — слушать, ждать и наблюдать. Улавливать сигналы внутри себя. Будет очень много знаков. Интуиция в 2026 году — это ваш проводник. Не требуйте ясности раньше времени, не пытайтесь быстро реагировать. Представьте себя под защитой — вас просто в нужный момент перенесут в нужное место. Главное — не вмешиваться. Быть в расслабленном, наблюдательном состоянии.",
+    male:"От вас в 2026 году не требуется никаких активных самостоятельных действий. Ваша задача — слушать, ждать и наблюдать. Улавливать сигналы внутри себя. Будет очень много знаков. Интуиция в 2026 году — это ваш проводник. Не требуйте ясности раньше времени. Представьте себя под защитой — вас просто в нужный момент перенесут в нужное место. Главное — не вмешиваться. Быть в расслабленном, наблюдательном состоянии.",
+    keys:["Интуиция","Пассивность","Знаки","Ждать момента"] },
+  3: { name:"Императрица", icon:"✿", key:"Любовь, отношения, изобилие",
+    general:"Императрица — это про любовь, это про отношения в первую очередь. Это очень богатая материальная энергия.",
+    female:"В 2026 году возможна внезапная встреча, через которую придёт любовь. Нужно согласиться на неопределённость, когда сразу непонятно, что это за человек, какими будут отношения. Но дайте шанс всем — не бойтесь отпускать, когда другой отдаляется. Ваша внутренняя настройка: моё мимо меня не пройдёт, или он ещё вернётся. Может быть феномен возвращения — любовь случится через возвращение кого-то, потому что Колесо Фортуны — это возвращение, повторение какой-то истории. Тема, которой повезёт — вопрос отношений, семьи, и отчасти денег.",
+    male:"В 2026 году возможна внезапная встреча, через которую придёт любовь. Дайте шанс всем — не бойтесь отпускать, когда другой отдаляется. Колесо Фортуны может вернуть кого-то из прошлого. Главные темы — отношения, семья, деньги. Императрица — очень богатая материальная энергия.",
+    keys:["Судьбоносная встреча","Возвращение","Семья","Изобилие"] },
+  4: { name:"Император", icon:"◈", key:"Обновление системы жизни",
+    general:"Структура будет меняться, начнёт двигаться то, что было очень стабильным, фундаментальным. Фортуна даст шанс изменить систему жизни, систему работы.",
+    female:"Это могут быть внезапные перемены в месте, где вы живёте — может быть, вы купите новую квартиру и переедете, или появится мужчина у вас в доме. Очень вероятны изменения по работе. Может быть, вам предложат перейти на новое место работы или поступит интересное деловое предложение, и вы будете думать: справлюсь ли я. Не нужно удерживать старый порядок — фортуна Императора это расширение вашей системы, ваших возможностей. Новая должность, рост бизнеса, финансовая независимость.",
+    male:"Это могут быть внезапные перемены в месте, где вы живёте. Очень вероятны изменения по работе. Может поступить интересное деловое предложение, и вы будете думать: справлюсь ли. Не нужно удерживать старый порядок — фортуна Императора это расширение ваших возможностей. Новая должность, рост, финансовая независимость.",
+    keys:["Перемены в доме/работе","Новая должность","Расширение системы","Рост"] },
+  5: { name:"Иерофант", icon:"⊕", key:"Трансформация ценностей и семьи",
+    general:"Иерофанту непросто с Фортуной, потому что Иерофант более традиционный, более консервативный. Колесо Фортуны будет менять ваши моральные ценности и убеждения.",
+    female:"В вопросах семьи и отношений с родственниками будут перемены. Возможен брак официальный. Возможны очень быстро развившиеся отношения, которые закончатся браком. Или вы вывалитесь из родительской системы — съедете от родителей, изменятся отношения с семьёй. Что для вас хорошо, что плохо, что можно, что нельзя — это изменится. Что-то нетрадиционное может появиться в вашей жизни. Может быть, какой-то эксперимент с внешним видом или что-то необычное.",
+    male:"В вопросах семьи и отношений с родственниками будут перемены. Возможен официальный союз. Или вы вывалитесь из родительской системы. Что для вас хорошо, что плохо, что можно, что нельзя — это изменится. Что-то нетрадиционное может появиться в вашей жизни.",
+    keys:["Семья/брак","Новые ценности","Выход из родительской системы","Эксперимент"] },
+  6: { name:"Влюблённые", icon:"∞", key:"Год судьбоносных встреч",
+    general:"Влюблённые и Фортуна — они друг друга хорошо понимают. Год судьбоносных встреч. Это могут быть романтические встречи и деловые новые партнёрства — соединение людей.",
+    female:"Вам нужно отдаться потоку встреч и потоку расставаний, потому что они связаны с друг другом. Не прятаться, не запираться, не бояться сделать первый шаг, признаваться в любви, признаваться в своём желании. Приглашать мир на живое взаимодействие. Слово года — приглашение. Я приглашаю, я откликаюсь на приглашение. Не нужно замирать в выборе и сомнениях — ничто не навсегда, и будут ещё варианты.",
+    male:"Вам нужно отдаться потоку встреч и расставаний — они связаны. Не прятаться, не бояться сделать первый шаг. Приглашать мир на живое взаимодействие. Слово года — приглашение. Не нужно замирать в сомнениях — ничто не навсегда.",
+    keys:["Судьбоносные встречи","Первый шаг","Приглашение","Поток"] },
+  7: { name:"Колесница", icon:"⟶", key:"Двойная скорость к цели",
+    general:"Колесница и Фортуна — как лошадь буквально. Это сочетание, которое даёт двойную скорость. Вы будете очень быстро продвигаться к исполнению своей мечты, к какой-то цели, и вы её добьётесь, скорее всего.",
+    female:"Но ваше движение будет нелинейно. Колесница привыкла ехать прямо к цели — а на Фортуне оно будет менять направление. Вам нужно к этому привыкнуть, не паниковать, не пытаться взять контроль. Представьте, что вы на лодке и вам нужно ловить ветер, поворачивать паруса под ветер, а не так, как вам кажется правильным. Тогда вы неожиданно окажетесь сразу у желанной цели.",
+    male:"Но ваше движение будет нелинейно. Колесница привыкла ехать прямо к цели — а на Фортуне оно будет менять направление. Не паникуйте, не пытайтесь взять контроль. Представьте, что вы на лодке — ловите ветер, поворачивайте паруса туда, куда дует ветер. Тогда неожиданно окажетесь у желанной цели.",
+    keys:["Двойная скорость","Цель достигнута","Нелинейный путь","Ловить ветер"] },
+  8: { name:"Правосудие", icon:"⚖", key:"Счастливое разрешение старых узлов",
+    general:"Правосудие и Фортуна — это счастливое разрешение, неожиданно удачное разрешение какого-то сложного вопроса, который, возможно, тянется из прошлого.",
+    female:"Как будто был какой-то узел когда-то завязанный, который никак не удавалось распутать. И тут приходит Фортуна и восстанавливается такой божественный порядок. Может быть, вас отпустят из какой-то ситуации, или вы получите причитающееся — причём то, что вы уже отчаялись получить. И вы скажете: «Да, есть справедливость, судьба меня видит». Это как будто вы долго делали правильные вещи, но не получалось. И вот наступает момент в 2026 году, когда вдруг количество переходит в качество и приходит желаемое.",
+    male:"Как будто был какой-то узел когда-то завязанный, который никак не удавалось распутать. И тут приходит Фортуна и восстанавливается такой божественный порядок. Может быть, вы получите причитающееся — то, что уже отчаялись получить. И скажете: «Да, есть справедливость, судьба меня видит». Вы долго делали правильные вещи, но не получалось — в 2026 году вдруг количество переходит в качество.",
+    keys:["Справедливость","Старый узел развяжется","Воздаяние","Количество в качество"] },
+  9: { name:"Отшельник", icon:"◉", key:"Замедление и глубина",
+    general:"Отшельник в Фортуне немножко в противоход коллективному процессу идёт. Мир летит, а вы замедляетесь. И в этом замедлении, во внимании к себе внутрь, вы откроете что-то очень важное.",
+    female:"Может быть, какой-то талант, или ценность вы обретёте, или какой-то смысл раскроется для вас. Это будет как подарок судьбы. Вы поймёте свой путь, свой замысел. Может быть, вы обретёте независимость — и это может быть финансовая независимость. Или получите подтверждение своего профессионализма, своей экспертности, и тогда мир начнёт вас как будто сам вытаскивать, сам приглашать: «Ты такая умная, ты столько знаешь, давай поработаем над этим».",
+    male:"Может быть, какой-то талант, или ценность вы обретёте, или какой-то смысл раскроется. Это будет как подарок судьбы. Вы поймёте свой путь, свой замысел. Может быть, вы обретёте финансовую независимость. Или получите подтверждение своего профессионализма, и тогда мир начнёт вас сам приглашать: «Ты такой умный, ты столько знаешь, давай поработаем».",
+    keys:["Замедление","Открытие таланта","Экспертность","Мир сам приглашает"] },
+  10: { name:"Колесо Фортуны", icon:"⊛", key:"Двойная Фортуна — эпицентр",
+    general:"Двойная Фортуна — это вы как будто в эпицентре. Вы двойная Фортуна, значит, вы талисман для себя самого.",
+    female:"И как будто вас ждёт какой-то очень большой поворот судьбы, очень большой переход — какое-то потрясающее предложение, или резкая смена декораций жизни, или какой-то внезапный переезд случится. И поскольку это две Фортуны, может быть, вы будете выбирать между двумя большими предложениями или двумя сценариями. Или вы внутри одного года проживёте несколько циклов этого колеса. Всё очень быстро и нелинейно.",
+    male:"И как будто вас ждёт какой-то очень большой поворот судьбы — потрясающее предложение, или резкая смена декораций жизни, или внезапный переезд. И поскольку это две Фортуны, может быть, вы будете выбирать между двумя большими предложениями. Или внутри одного года проживёте несколько циклов этого колеса. Всё очень быстро и нелинейно.",
+    keys:["Двойная удача","Поворот судьбы","Выбор между двумя","Несколько циклов"] },
+  11: { name:"Сила", icon:"◎", key:"Восстановление личной силы",
+    general:"Это год восстановления своей личной силы. Год, когда ваше тело станет очень важным для вас. Год, когда вам нужно восстановить доверие к своим реакциям, доверие к своему телу, доверие к своему нежеланию.",
+    female:"Когда вы будете выбирать не головой и даже не сердцем, вы будете выбирать животом, вот этим влечением, этим центром физическим: хочу я быть с этим человеком или меня тошнит, хочу я быть на этой работе или всё, я больше не могу себя насиловать. Год для вас — вы перестанете совершать над собой какое-то насилие. Это тема, когда ваша жизнь освободится от токсичного. Важный проход для вас в 2026 году — это сексуальность, это телесность. Может быть, вы телесными практиками начнёте заниматься. Разгон сексуальной энергии — здоровый — очень важен для вас.",
+    male:"Когда вы будете выбирать не головой, вы будете выбирать животом, этим центром физическим: хочу я быть с этим человеком или меня тошнит, хочу я быть на этой работе или нет. Год — вы перестанете совершать над собой насилие. Ваша жизнь освободится от токсичного. Важный проход в 2026 году — телесность. Может быть, вы телесными практиками начнёте заниматься. Для мужчин — прежде всего контакт со своими чувствами. Хорошо обращайтесь с женщинами в 2026 году — это прямой ключ к удаче.",
+    keys:["Личная сила","Доверие телу","Освобождение от токсичного","Телесность"] },
+  12: { name:"Повешенный", icon:"◌", key:"Новые ценности и дар служения",
+    general:"В 2026 году у вас появятся новые ценности, другие приоритеты. Это может быть про духовное открытие внутри себя. Как будто материальные земные цели вас отпустят.",
+    female:"Вы в 2026 году станете спокойнее, терпеливее — это дар принятия. У вас могут открыться необыкновенные способности, потому что Повешенный — это психологический дар, это дар целительства, помощи другому человеку. Как будто вот вы почувствуете эту свою силу. И Повешенный — это открытие точки служения. Вы поймёте, нащупаете то, что не можете не делать. Сила молитвы в 2026 году для вас огромная. Обращайтесь к высшему, отдавайте высшему решение. Когда вы будете отпускать залог исполнения — решение придёт совершенно неожиданно с другой стороны.",
+    male:"Вы станете спокойнее, терпеливее — это дар принятия. У вас могут открыться необыкновенные способности — это дар целительства, помощи другому человеку. Повешенный — это открытие точки служения. Вы поймёте, нащупаете то, что не можете не делать. Сила молитвы в 2026 году огромная. Обращайтесь к высшему, отдавайте высшему решение. Когда будете отпускать залог исполнения — решение придёт с другой стороны.",
+    keys:["Духовное открытие","Дар служения","Принятие","Отпустить результат"] },
+  13: { name:"Смерть", icon:"◆", key:"Счастливое освобождение и очищение",
+    general:"Смерть и Фортуна — это программа счастливого освобождения, счастливого очищения. Завершение какой-то истории, ускоренное завершение.",
+    female:"Смерть приходит для того, чтобы отрезать то, что уже не работает, и из этого неживого освободить энергию. Очень поддерживается в 2026 году смена работы, смена партнёра, или какая-то трансформация в сфере личной жизни. Старые декорации выносят, освобождают поле — и там рождается новый младенчик. Старое уходит, и рождается новое. Вам нужно сейчас обязательно провести дома генеральную уборку. Расхламление — это прямо обязательно, это активация вашего личного архетипа.",
+    male:"Смерть приходит для того, чтобы отрезать то, что уже не работает, и из этого неживого освободить энергию. Очень поддерживается смена работы, смена партнёра, или какая-то трансформация в личной жизни. Старые декорации выносят — и там рождается новое. Вам нужно сейчас обязательно провести дома генеральную уборку — это активация вашего личного архетипа.",
+    keys:["Завершение","Расхламление дома","Рождение нового","Смена деятельности"] },
+  14: { name:"Умеренность", icon:"⬡", key:"Состояние спокойного «хорошо»",
+    general:"Вам Фортуна в 2026 году подарит состояние спокойного хорошо. Как будто у вас появится свой мир, своё пространство — мне хорошо у себя, мне безопасно, даже если штормит.",
+    female:"И всё ваше внимание — к вашему состоянию. Вам будут предложены новые ингредиенты в вашу жизнь в абсолютно комфортном режиме. Фортуна вам их разложит. И ваша задача — не хватать всё сразу и не отказываться, а вот понемножечку пробовать впускать в себя и говорить: «А вот это мне нравится, это, пожалуй, я возьму осторожно». Всё очень осторожно, всё чувствуя на вкус, не принимая резких решений, не нужно торопиться. Ваша задача — всё время держать внутренний камертон, всё время дегустировать то новое, что будет приходить. И помощь ангелов будет.",
+    male:"И всё ваше внимание — к вашему состоянию. Вам будут предложены новые ингредиенты в вашу жизнь в комфортном режиме. Ваша задача — не хватать всё сразу и не отказываться, а понемножечку пробовать и говорить: «А вот это мне нравится». Всё очень осторожно, всё чувствуя на вкус, не принимая резких решений. Держите внутренний камертон баланса. Умеренность — человек под защитой ангелов.",
+    keys:["Свой мир","Баланс","Дегустация нового","Под защитой"] },
+  15: { name:"Дьявол", icon:"◇", key:"Большие деньги и раскрепощение",
+    general:"Пятнадцатая энергия — это история про большие деньги. Это история про какое-то заманчивое предложение. История про карьеру: я хочу продвинуться, я продвигаюсь.",
+    female:"Это состояние, когда я хочу денег, я имею на них право, и я этого стою, я повышаю себе чек, я повышаю себе стоимость. Когда человек выбирает себя в свою пользу: я хочу денег, я имею на них право, хочу себе покупать на кровно заработанные. Вот такое изменение внутренней концепции, перестройка ценностей — знаете, мы же все должны быть скромные и для других, а не для себя. А Дьявол говорит: «Я хочу, я могу, я имею право, это мои деньги. В первую очередь я буду их тратить на себя. Я больше не хорошая девочка. Я эгоистка, жадная» — вот такая интеграция теневых качеств, которые нам очень нужны. И это какое-то раскрепощение.",
+    male:"Это состояние, когда я хочу денег, я имею на них право, и я этого стою. Повышайте себе чек. Изменение внутренней концепции: мы же все должны быть скромные. А вот Дьявол говорит: «Я хочу, я могу, я имею право, это мои деньги. В первую очередь я буду их тратить на себя. Я больше не хороший мальчик. Я эгоист, жадный» — вот такая интеграция теневых качеств, которые нам очень нужны.",
+    keys:["Большие деньги","Повысить свою цену","Выбрать себя","Интеграция тени"] },
+  16: { name:"Башня", icon:"⚡", key:"Мощная быстрая трансформация",
+    general:"Башня — это какая-то внезапная, очень мощная и очень быстрая трансформация жизни. Башня — это взрыв. Это когда вдруг — и всё случилось.",
+    female:"Это может быть — в один момент решится проблема, которая вас долго напрягала. Или состояние, когда вы говорите: «Всё, с меня хватит, больше я этим не занимаюсь, больше не хочу. Всё, я иду в обновление, я иду в освобождение». Башня никогда не разрушает живое — она зачищает только неактуальное и выпускает то, что давно уже просилось на волю. Вам важно в 2026 году выпускать эту энергию. Не проглатывать, не сдерживать себя. Эмоцию проявлять, отстаивать себя. Голос, может быть, у вас прорежется. Потому что проглоченная энергия Башни превращается в тихую ненависть, которая разрушает человека. Башня говорит: «Нет, я так не хочу» — и прямо в голос это говорит. Рекомендация: обязательно провести дома генеральную уборку прямо сейчас.",
+    male:"Это может быть — в один момент решится проблема, которая вас долго напрягала. Состояние: «Всё, с меня хватит, больше не хочу, иду в обновление, в освобождение». Башня никогда не разрушает живое — она зачищает только неактуальное. Вам важно выпускать эту энергию — не проглатывать, не сдерживать. Эмоцию проявлять, отстаивать себя, звучать в полный голос. Потому что проглоченная энергия Башни превращается в тихую ненависть, которая разрушает изнутри. Рекомендация: обязательно провести дома генеральную уборку.",
+    keys:["Катарсис","Мгновенное решение","Выпускать эмоции","Зачистка неактуального"] },
+  17: { name:"Звезда", icon:"★", key:"Пробуждение таланта и стратегии",
+    general:"2026 год для вас — это год пробуждения какого-то своего таланта, какого-то очень аутентичного потокового творчества. Как будто вы ощутите вкус своей вибрации, свою музыку услышите.",
+    female:"И может быть это про то, что у вас появится стратегия. Звезда — это какая-то долгосрочная стратегия. У меня появляются ориентиры. Моя звезда загорается. Я понимаю, куда я иду. Это тема — не когда я в тени кого-то, не когда свечусь отражённым светом, а когда появляется нежный, тонкий, но именно мой свет. Очень важно проявляться в 2026 году. Звезда — это светило. Вы должны показывать то, что вы создаёте. Немножко показывать себя, не прятаться. Звезда должна быть видимой. И всегда спрашивайте у себя: большая цель для меня какая? Что я хочу через 5 лет, через 10 лет?",
+    male:"И может быть это про то, что у вас появится стратегия. Звезда — это какая-то долгосрочная стратегия. У меня появляются ориентиры. Моя звезда загорается. Я понимаю, куда я иду. Это тема — не когда я в тени кого-то, а когда появляется нежный, но именно мой свет. Важно проявляться — показывать то, что вы создаёте, не прятаться. Звезда должна быть видимой. И всегда спрашивайте у себя: большая цель для меня какая? Что я хочу через 5 лет, через 10 лет?",
+    keys:["Свой талант","Долгосрочная стратегия","Видимость","Мой свет"] },
+  18: { name:"Луна", icon:"◗", key:"Дар материализации фантазий",
+    general:"Луна — это доступ к гиперсознательному, к бессознательному. В 2026 году ваш канал фантазий, ваш канал образов, ваш канал интуиции расширяется. Может быть, вы станете видеть сны, видеть знаки.",
+    female:"У вас в 2026 году просыпается одна способность, которая может быть повёрнута в плюс. Луна — это дар материализации своих фантазий. Если вы настроены хорошо на своё будущее, говорите: «Я счастливая, у меня всё будет хорошо, у меня всё получится, всё, что происходит со мной — большая удача» — то Луна в 2026 году поможет материализовать вот такую жизнь. Одна из самых рабочих практик для Луны — это рисовать карту желаний. Но если вы в тревоге, в негативном мыслительном процессе — Луна может точно также это взять и материализовать. Луна — феминная энергия, женская магия просыпается, пробудится женский дар.",
+    male:"У вас в 2026 году просыпается способность материализации своих фантазий. Если вы настроены позитивно — Луна поможет материализовать хорошее. Если в тревоге и негативных фантазиях — может материализовать и их. Поэтому намечтываем себе хорошее будущее. Для мужчин это прежде всего контакт со своими чувствами. Хорошо обращайтесь с женщинами в 2026 году — Луна, если с ней хорошо обращаться, будет вашей персональной волшебницей.",
+    keys:["Материализация желаний","Карта желаний","Интуиция и сны","Позитивный настрой"] },
+  19: { name:"Солнце", icon:"☀", key:"Триумф, радость, видимость",
+    general:"2026 год для вас — это вспышка творчества, вспышка видимости и желанный успех. Даже не неожиданный — а ожидаемый, желанный. Солнце — это аркан триумфа.",
+    female:"Что-то у вас получится классное, очень заметное, и от чего будет много радости. Может быть, это про карьеру, про ваше творчество, ваш продукт. Или начнёте продвигать себя через соцсети, и вас станут замечать. А может быть, у вас исполнится какое-то заветное желание — например, ребёнок родится, или какое-то приобретение. Солнце — это когда радость ко мне приходит, и я живу из этой радости и творю. Помните, что вы ролевая модель. На вас смотрят, на вас равняются. Вам не надо стыдиться, не надо стесняться. Тема 2026 года для вас — это «Я себя люблю, я себя поддерживаю». Любовь к себе и забота о своём внутреннем ребёнке.",
+    male:"Что-то у вас получится классное, очень заметное, и от чего будет много радости. Может быть, это про карьеру или ваш продукт. Солнце — это когда радость ко мне приходит, и я живу из этой радости. Вы ролевая модель. На вас равняются. Вам не надо стыдиться, не надо стесняться. Тема 2026 года — «Я себя люблю, я себя поддерживаю».",
+    keys:["Триумф","Видимость","Радость","Любить себя"] },
+  20: { name:"Суд", icon:"✧", key:"Зов судьбы и миссия",
+    general:"Год судьбоносного явления в вашей жизни, потому что Суд — это зов судьбы, это призыв. Судьба, которая была давным-давно предначертана, начинает сбываться.",
+    female:"Вы в 2026 году — на службе. Суд — это как миссия. То есть может возникнуть ситуация, когда вы не сможете сказать нет, вы почувствуете, что вы должны это сделать, должны на это пойти, согласиться, взять на себя роль какого-то лидера или принять ответственность. Суд — это увеличение масштаба, это рост, это влияние на группы людей. И ещё очень важная тема в 2026 году — обратите внимание на ваши отношения со своим родом. Суд — это энергия целителя рода, проводника родовой энергии. Может быть, от вас потребуется собрать род, восстановить его, примирить, или обратиться к ресурсу рода, получить благословение.",
+    male:"Вы в 2026 году — на службе. Суд — это как миссия. Может возникнуть ситуация, когда вы не сможете сказать нет, вы почувствуете, что вы должны это сделать, взять на себя роль какого-то лидера или принять ответственность. Суд — это увеличение масштаба, рост, влияние на группы людей. Важная тема в 2026 году — обратите внимание на ваши отношения со своим родом. Может быть, от вас потребуется собрать род, восстановить его, или получить благословение.",
+    keys:["Зов судьбы","Миссия","Масштаб и рост","Целитель рода"] },
+  21: { name:"Мир", icon:"○", key:"Завершение большого пути",
+    general:"Двадцать первый аркан — это аркан Мир. Завершение большого пути. Как будто вы долго к чему-то шли, долго стремились, у вас уже такой путь пройден. Мир — это триумфальное завершение.",
+    female:"Вот всё, я дома, я долго путешествовала и наконец я дома. Это может быть — вы какой-то проект делали по жизни и получили его наконец. Или вы долго шли к какому-то делу и овладели. Или вы хотели семью — и наконец семья появилась, и вы обрели в этом счастье. Мир — это состояние целостности, когда происходит что-то и у меня всё встаёт на свои места. Мне больше нет тревог, мне некуда бежать. Не в смысле некуда бежать — а в смысле, что я больше не хочу. Я пришла куда хотела. Я теперь могу сказать: я удовлетворена. Я умиротворена.",
+    male:"Вот всё, я дома, я долго путешествовал и наконец я дома. Это может быть — вы какой-то проект делали по жизни и получили его наконец. Или вы хотели семью — и наконец семья появилась. Мир — это состояние целостности, когда у меня всё встаёт на свои места. Мне больше нет тревог, мне некуда бежать. Я пришёл куда хотел. Я удовлетворён. Я умиротворён.",
+    keys:["Умиротворение","Целостность","Пришёл домой","Завершение цикла"] },
+  22: { name:"Шут", icon:"◯", key:"Обнуление и абсолютная свобода",
+    general:"Аркан Шут — это обнуление прежнего опыта. Как будто у вас случится нечто, в чём вы никогда ещё ни разу не были. Шут — это разрушение старых матриц, старых концепций, старых представлений о себе.",
+    female:"Это какой-то абсолютный эксперимент, в котором мы не знаем итога. Вот как Алиса шагает в кроличью нору, куда-то летит. Чего там будет — она не знает. Шут и Колесо Фортуны очень в похожих вибрациях. Состояние обнуления — когда нужно доверие развивать внутри себя, когда нужно сделать этот шаг в неизвестное, сказать себе: «Я пустая, я никто, я не знаю, кто я. Нет никаких концепций» — и выдержать эту пустоту внутри себя, не заполнять её тут же суррогатами. Шут — это свобода. Но больше всего мне нравится — начало путешествия. Шут — это ноль и одновременно старт. Обнуление и снова абсолютная пустота, из которой может родиться всё.",
+    male:"Это абсолютный эксперимент, в котором мы не знаем итога. Вот как Алиса шагает в кроличью нору. Состояние обнуления — когда нужно сделать этот шаг в неизвестное, сказать себе: «Я пустой, я никто, нет никаких концепций» — и выдержать эту пустоту, не заполнять её суррогатами. Шут — это свобода и одновременно старт. Обнуление — и снова абсолютная пустота, из которой может родиться всё.",
+    keys:["Обнуление","Шаг в неизвестное","Свобода","Новый старт"] },
+};
+
+/* ── INIT ANIMAL GRIDS ── */
+function initAnimalGrids() {
+  ['year','month','day'].forEach(function(pos) {
+    var grid = document.getElementById('grid-' + pos);
+    animalList.forEach(function(a) {
+      var btn = document.createElement('button');
+      btn.className = 'animal-btn';
+      btn.dataset.id = a.id;
+      btn.dataset.pos = pos;
+      btn.innerHTML = '<span class="a-emoji">' + a.emoji + '</span>' + a.name;
+      btn.onclick = function() { selectAnimal(pos, a.id, btn); };
+      grid.appendChild(btn);
+    });
+  });
+}
+
+function selectAnimal(pos, id, btn) {
+  var grid = document.getElementById('grid-' + pos);
+  grid.querySelectorAll('.animal-btn').forEach(function(b) { b.classList.remove('selected'); });
+  btn.classList.add('selected');
+  selectedAnimals[pos] = id;
+}
+
+function setMode(mode) {
+  selectedMode = mode;
+  document.getElementById('mode-full').classList.toggle('active', mode === 'full');
+  document.getElementById('mode-short').classList.toggle('active', mode === 'short');
+}
+
+function selectGender(g) {
+  selectedGender = g;
+  document.getElementById('btn-f').classList.toggle('active', g === 'f');
+  document.getElementById('btn-m').classList.toggle('active', g === 'm');
+}
+
+function handleInput(el, nextId) {
+  el.value = el.value.replace(/\D/g,'');
+  if (el.value.length >= parseInt(el.maxLength) && nextId) {
+    document.getElementById(nextId).focus();
+  }
+}
+
+function getCalcText(dStr, mStr, y, num) {
+  var all = (dStr + mStr + y).split('').map(Number);
+  var raw = all.reduce(function(a,b){return a+b;},0);
+  var with10 = raw + 10;
+  var steps = raw + ' + 10 = ' + with10;
+  if (with10 > 22) {
+    var n = with10;
+    while(n > 22) { steps += ' − 22 = ' + (n-22); n -= 22; }
+  }
+  return 'Расчёт: ' + steps;
+}
+
+function getAnimalById(id) {
+  return animalList.find(function(a){ return a.id === id; });
+}
+
+function calculate() {
+  var d = document.getElementById('inp-d').value.trim();
+  var m = document.getElementById('inp-m').value.trim();
+  var y = document.getElementById('inp-y').value.trim();
+  var err = document.getElementById('error-msg');
+
+  if (!selectedGender) { err.style.display='block'; err.textContent='Выбери пол'; return; }
+  if (!d || !m || !y || y.length < 4 || parseInt(d)<1 || parseInt(d)>31 || parseInt(m)<1 || parseInt(m)>12) {
+    err.style.display='block'; err.textContent='Пожалуйста, заполни все поля корректно'; return;
+  }
+  err.style.display = 'none';
+
+  var dStr = d.padStart(2,'0'), mStr = m.padStart(2,'0');
+  var digits = (dStr + mStr + y).split('').map(Number);
+  var sum = digits.reduce(function(a,b){return a+b;},0) + 10;
+  while (sum > 22) sum -= 22;
+
+  var arc = archetypes[sum];
+  var isF = selectedGender === 'f';
+
+  if (selectedMode === 'full') {
+    showFullResult(arc, sum, isF, dStr, mStr, y);
+  } else {
+    showShortResult(arc, sum, isF);
+  }
+
+  var resultEl = document.getElementById('result');
+  resultEl.style.display = 'block';
+  resultEl.classList.remove('visible');
+  void resultEl.offsetWidth;
+  resultEl.classList.add('visible');
+
+  setTimeout(function(){
+    resultEl.scrollIntoView({behavior:'smooth', block:'start'});
+  }, 100);
+}
+
+function showFullResult(arc, num, isF, dStr, mStr, y) {
+  document.getElementById('result-full').style.display = 'block';
+  document.getElementById('result-short').style.display = 'none';
+
+  document.getElementById('res-num').textContent = num;
+  document.getElementById('res-icon').textContent = arc.icon;
+  document.getElementById('res-name').textContent = arc.name;
+  document.getElementById('res-key').textContent = arc.key;
+  document.getElementById('res-calc').textContent = getCalcText(dStr, mStr, y, num);
+  document.getElementById('res-general').innerHTML = arc.general;
+  document.getElementById('res-personal').innerHTML = isF ? arc.female : arc.male;
+
+  var keysHtml = arc.keys.map(function(k){ return '<span class="key-chip">'+k+'</span>'; }).join('');
+  document.getElementById('res-keys').innerHTML = keysHtml;
+
+  // Animals
+  var hasAnimals = selectedAnimals.year || selectedAnimals.month || selectedAnimals.day;
+  var animalsEl = document.getElementById('res-animals');
+  if (hasAnimals) {
+    var list = document.getElementById('animals-list');
+    list.innerHTML = '';
+    var positions = [
+      { key:'year',  label:'Год рождения' },
+      { key:'month', label:'Месяц рождения' },
+      { key:'day',   label:'День рождения' },
+    ];
+    positions.forEach(function(pos) {
+      if (!selectedAnimals[pos.key]) return;
+      var a = getAnimalById(selectedAnimals[pos.key]);
+      if (!a) return;
+      var row = document.createElement('div');
+      row.className = 'animal-row';
+      row.innerHTML =
+        '<div class="animal-emoji-big">' + a.emoji + '</div>' +
+        '<div class="animal-info">' +
+          '<div class="animal-pos">' + pos.label + '</div>' +
+          '<div class="animal-name-result">' + a.name + ' · ' + a.from + ' → ' + a.to + '</div>' +
+          '<div class="animal-task">' + a.tip + '</div>' +
+        '</div>';
+      list.appendChild(row);
+    });
+    animalsEl.style.display = 'block';
+  } else {
+    animalsEl.style.display = 'none';
+  }
+}
+
+function showShortResult(arc, num, isF) {
+  document.getElementById('result-full').style.display = 'none';
+  document.getElementById('result-short').style.display = 'block';
+
+  document.getElementById('res-num-s').textContent = num;
+  document.getElementById('res-icon-s').textContent = arc.icon;
+  document.getElementById('res-name-s').textContent = arc.name;
+  document.getElementById('res-key-s').textContent = arc.key;
+
+  // Actions
+  var actions = shortActions[num] || [];
+  var actionsEl = document.getElementById('res-actions');
+  actionsEl.innerHTML = '';
+  actions.forEach(function(act, i) {
+    var div = document.createElement('div');
+    div.className = 'action-item';
+    div.innerHTML = '<div class="action-num">' + (i+1) + '</div><div class="action-text">' + act + '</div>';
+    actionsEl.appendChild(div);
+  });
+
+  // Animal tips
+  var hasAnimals = selectedAnimals.year || selectedAnimals.month || selectedAnimals.day;
+  var animalSec = document.getElementById('short-animals-section');
+  if (hasAnimals) {
+    var tipsEl = document.getElementById('res-animal-tips');
+    tipsEl.innerHTML = '';
+    ['year','month','day'].forEach(function(pos) {
+      if (!selectedAnimals[pos]) return;
+      var a = getAnimalById(selectedAnimals[pos]);
+      if (!a) return;
+      var div = document.createElement('div');
+      div.className = 'action-item';
+      div.innerHTML = '<div class="action-num">' + a.emoji + '</div><div class="action-text"><b>' + a.name + ':</b> ' + a.tip + '</div>';
+      tipsEl.appendChild(div);
+    });
+    animalSec.style.display = 'block';
+  } else {
+    animalSec.style.display = 'none';
+  }
+
+  document.getElementById('res-question').textContent = weekQuestions[num] || '';
+}
+
+function reset() {
+  document.getElementById('result').style.display = 'none';
+  document.getElementById('inp-d').value = '';
+  document.getElementById('inp-m').value = '';
+  document.getElementById('inp-y').value = '';
+  selectedGender = null;
+  selectedAnimals = { year: null, month: null, day: null };
+  document.getElementById('btn-f').classList.remove('active');
+  document.getElementById('btn-m').classList.remove('active');
+  document.querySelectorAll('.animal-btn').forEach(function(b){ b.classList.remove('selected'); });
+  window.scrollTo({top:0, behavior:'smooth'});
+}
+
+initAnimalGrids();
+</script>
+
+
+</body>
+</html>
